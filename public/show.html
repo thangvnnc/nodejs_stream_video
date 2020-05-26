@@ -13,7 +13,7 @@
                 $('#logger').text(msg);
             }
 
-            var socket = io('http://videostream.com');
+            var socket = io();
             let room = 'show';
             socket.emit('register', room);
             socket.on(room, function(data) {

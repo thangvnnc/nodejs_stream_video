@@ -10,7 +10,7 @@
         <canvas id="preview"></canvas>
 
         <script>
-            var socket = io('http://videostream.com');
+            var socket = io();
             var canvas = document.getElementById('preview');
             var context = canvas.getContext('2d');
             canvas.width = 800;
