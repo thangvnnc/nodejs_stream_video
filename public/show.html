@@ -1,0 +1,26 @@
+<html lang="vi">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+       
+    </head>
+    <body>
+        <img id="img-show" style="width: 800px; height: 600px;"/>
+        <div id="logger"></div>
+
+        <script>
+            function logger(msg) {
+                $('#logger').text(msg);
+            }
+
+            var socket = io('http://videostream.com');
+            let room = 'show';
+            socket.emit('register', room);
+            socket.on(room, function(data) {
+                var streamData = 'data:image/webp;base64,' + data.streamData;
+                logger(streamData);
+                $('#img-show').attr('src', streamData);
+            });
+        </script>
+    </body>
+</html>
